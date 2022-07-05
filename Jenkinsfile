@@ -2,19 +2,16 @@ pipeline {
     agent any
     stages {
         stage('Checkout Source Code') {
-            steps {
-
-            }
+            // steps {
+            // }
         }
         stage('Build Image') {
-            steps {
-
-            }
+            // steps {
+            // }
         }
         stage('Push Image to Repository') {
-            steps {
-                
-            }
+            // steps {
+            // }
         }
     }
 }
