@@ -2,16 +2,19 @@ pipeline {
     agent any
     stages {
         stage('Checkout Source Code') {
-            // steps {
-            // }
+            steps {
+                echo "Stage 1 - Checkout Source Code"
+            }
         }
         stage('Build Image') {
-            // steps {
-            // }
+            steps {
+                echo "Stage 2 - Build Container Image"
+            }
         }
         stage('Push Image to Repository') {
-            // steps {
-            // }
+            steps {
+                echo "Stage 3 - Push Image to Repo"
+            }
         }
     }
 }
