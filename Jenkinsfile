@@ -1,19 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout Source Code') {
-            steps {
-                echo "Stage 1 - Checkout Source Code"
-            }
-        }
         stage('Build Image') {
             steps {
-                echo "Stage 2 - Build Container Image"
+                echo "Stage 1 - Build Container Image"
+                pwd
+                docker build -t jackcch/todoproject:latest .
             }
         }
         stage('Push Image to Repository') {
             steps {
-                echo "Stage 3 - Push Image to Repo"
+                echo "Stage 2 - Push Image to Repo"
             }
         }
     }
