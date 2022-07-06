@@ -19,7 +19,7 @@ pipeline {
                 echo "Stage 2a - Login DockerHub"
                 withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) 
                 {
-                    sh ('docker login -u $dockerUser --password-stdin')
+                    sh ('docker login -u $dockerUser -p $dockerPassword')
                 }
                 echo "Stage 2 - Push Image to Repo"
                 sh "docker tag $containerName:$tag $dockerHubUser/$containerName:$tag"
