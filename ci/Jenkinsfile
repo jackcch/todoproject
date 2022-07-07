@@ -10,7 +10,7 @@ pipeline {
                 echo "Stage 1 - Build Container Image"
                 sh "pwd"
                 sh "docker image prune -f"
-                sh "docker build -t $containerName:$tag --pull --no-cache ."
+                sh "docker build -t $dockerHubUser/$containerName:$tag --pull --no-cache ."
                 echo "Stage 1 - Image Build Completed"
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                     sh ('docker login -u $dockerUser -p $dockerPassword')
                 }
                 echo "Stage 2 - Push Image to Repo"
-                sh "docker tag $containerName:$tag $dockerHubUser/$containerName:$tag"
+                // sh "docker tag $containerName:$tag $dockerHubUser/$containerName:$tag"
                 sh "docker push $dockerHubUser/$containerName:$tag"
             }
         }
