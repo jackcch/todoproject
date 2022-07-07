@@ -1,7 +1,7 @@
 ---
 - hosts: webservers
   gather_facts: no
-  remote_user: ansible
+  remote_user: vagrant
   become: yes
   tasks:
     - name: Install docker and some dependencies
