@@ -1,4 +1,6 @@
-FROM python:3.10.4
+FROM python:3.10.5-alpine3.16
+
+ENV PYTHONUNBUFFERED 1
 
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
