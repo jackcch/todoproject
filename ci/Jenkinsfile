@@ -2,6 +2,7 @@ def containerName="todoproject"
 def tag="latest"
 def dockerHubUser="jackcch"
 def gitURL="https://github.com/jackcch/todoproject.git"
+
 pipeline {
     agent any
     stages {
@@ -22,8 +23,18 @@ pipeline {
                     sh ('docker login -u $dockerUser -p $dockerPassword')
                 }
                 echo "Stage 2 - Push Image to Repo"
-                // sh "docker tag $containerName:$tag $dockerHubUser/$containerName:$tag"
                 sh "docker push $dockerHubUser/$containerName:$tag"
+            }
+        }
+        stage('Clean up Build Env') {
+            steps {
+                echo "Stage 3 - Cleanup"
+                sh "docker rmi $dockerHubUser/$containerName:$tag"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                ansiblePlaybook inventory: 'ci/ansible/hosts', playbook: 'ci/ansible/deploy.yaml'
             }
         }
     }
