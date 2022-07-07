@@ -8,8 +8,8 @@ WORKDIR /code
 
 EXPOSE 8000
 
-CMD python "todoproject/manage.py" "makemigrations"
-CMD python "todoproject/manage.py" "migrate"
+CMD python3 "todoproject/manage.py" "makemigrations"
+CMD python3 "todoproject/manage.py" "migrate"
 
-ENTRYPOINT ["python", "todoproject/manage.py"]
+ENTRYPOINT ["python3", "todoproject/manage.py"]
 CMD ["runserver", "0.0.0.0:8000"]
