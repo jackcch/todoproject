@@ -37,7 +37,7 @@ pipeline {
                 sh "echo $USER"
                 sh "pwd"
                 sh "ansible 192.168.1.157 -m ping -vvvv"
-                ansiblePlaybook inventory: 'ci/ansible/hosts', playbook: 'ci/ansible/deploy.yaml'
+                ansiblePlaybook become: true, becomeUser: 'ansible', credentialsId: 'ansible', installation: 'ansible', inventory: 'ci/ansible/hosts', playbook: 'ci/ansible/deploy.yaml'
             }
         }
     }
