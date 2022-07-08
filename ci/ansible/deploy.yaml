@@ -20,9 +20,9 @@
 
     - name: Create Application container
       docker_container:
-        name: docker-pipeline
+        name: docker-todoproject
         image: jackcch/todoproject:latest
         state: started
         recreate: yes
-        exposed_ports:
+        ports:
           - "80:8000"
