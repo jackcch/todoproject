@@ -19,10 +19,24 @@
         name: docker
 
     - name: Create Application container
-      docker_container:
+      community.docker.docker_container:
         name: docker-todoproject
         image: jackcch/todoproject:latest
         state: started
         recreate: yes
         ports:
           - "80:8000"
+
+    - name: Migrate Django db
+      community.docker.docker_container_exec:
+        container: jackcch/todoproject
+        argv:
+          - python3
+          - "manage.py"
+          - "migrate"
+        chdir: /code
+        register: result
+        
+    - name: Print Stdout
+      debug:
+          var: result.stdout
