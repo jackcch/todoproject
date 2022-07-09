@@ -30,7 +30,7 @@
     - name: Migrate Django db
       community.docker.docker_container_exec:
         container: docker-todoproject
-        command: ls -lart
+        command: python3 manage.py migrate
         chdir: /code/todoproject/
       register: result
         
