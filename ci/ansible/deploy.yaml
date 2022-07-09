@@ -19,7 +19,7 @@
         name: docker
 
     - name: Create Application container
-      community.docker.docker_container:
+      docker_container:
         name: docker-todoproject
         image: jackcch/todoproject:latest
         state: started
@@ -28,7 +28,7 @@
           - "80:8000"
 
     - name: Migrate Django db
-      community.docker.docker_container_exec:
+      docker_container_exec:
         container: jackcch/todoproject
         argv:
           - python3
