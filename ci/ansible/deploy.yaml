@@ -29,7 +29,7 @@
 
     - name: Migrate Django db
       community.docker.docker_container_exec:
-        container: jackcch/todoproject
+        container: docker-todoproject
         argv:
           - python3
           - "manage.py"
