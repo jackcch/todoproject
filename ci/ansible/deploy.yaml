@@ -1,5 +1,5 @@
 ---
-- hosts: webservers
+- hosts: webservers-qa
   gather_facts: no
   remote_user: jenkins
   become: yes
@@ -27,7 +27,19 @@
         ports:
           - "80:8000"
 
-    - name: Migrate Django db
+ - name: Collect statics - Django in container
+      community.docker.docker_container_exec:
+        container: docker-todoproject
+        command: python3 manage.py collectstatic
+        chdir: /code/todoproject/
+
+    - name: Make Migrations - Django in container
+      community.docker.docker_container_exec:
+        container: docker-todoproject
+        command: python3 manage.py makemigrations
+        chdir: /code/todoproject/
+
+    - name: Migrate database - Django in container
       community.docker.docker_container_exec:
         container: docker-todoproject
         command: python3 manage.py migrate

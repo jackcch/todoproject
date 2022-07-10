@@ -1,0 +1,11 @@
+[webservers-qa]
+web01-qa ansible_host=192.168.1.157 
+
+[webservers-qa:vars]
+ansible_user=jenkins
+
+[webservers-prod]
+web01-prod ansible_host=192.168.1.201 
+
+[webservers-prod:vars]
+ansible_user=jenkins
