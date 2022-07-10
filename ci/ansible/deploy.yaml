@@ -30,7 +30,7 @@
     - name: Collect statics - Django in container
       community.docker.docker_container_exec:
         container: docker-todoproject
-        command: python3 manage.py collectstatic
+        command: python3 manage.py collectstatic --noinput
         chdir: /code/todoproject/
 
     - name: Make Migrations - Django in container
@@ -42,7 +42,7 @@
     - name: Migrate database - Django in container
       community.docker.docker_container_exec:
         container: docker-todoproject
-        command: python3 manage.py migrate
+        command: python3 manage.py migrate --noinput
         chdir: /code/todoproject/
       register: result
         
