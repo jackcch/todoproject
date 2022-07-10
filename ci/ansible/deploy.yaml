@@ -27,7 +27,7 @@
         ports:
           - "80:8000"
 
- - name: Collect statics - Django in container
+    - name: Collect statics - Django in container
       community.docker.docker_container_exec:
         container: docker-todoproject
         command: python3 manage.py collectstatic
