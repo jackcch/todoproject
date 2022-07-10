@@ -17,6 +17,11 @@
     - name: Install docker python module
       pip:
         name: docker
+        
+    - name: Pull latest image from repo
+      community.docker.docker_image:
+        name: jackcch/todoproject:latest 
+        source: pull
 
     - name: Create Application container
       community.docker.docker_container:
