@@ -22,6 +22,8 @@
       community.docker.docker_image:
         name: jackcch/todoproject:latest 
         source: pull
+        state: present
+        force_source: yes
 
     - name: Create Application container
       community.docker.docker_container:
